@@ -8,6 +8,11 @@ import java.io.*;
 import java.net.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+
+
+
+
+
 /**
  *
  * @author andy
@@ -28,10 +33,18 @@ public class Manoa {
 
     }
 
-    public String DeleteHTML(){
-        String ReturnData = "";
-        ReturnData =  this.SiteData.replaceAll("<br\\s*/+>", "");
+    public String DeleteHTML()throws UnsupportedEncodingException{
+        String ReturnData = this.SiteData;
         ReturnData =  ReturnData.replaceAll("<script.*>.*</script>", "");
+        ReturnData =  ReturnData.replaceAll("<style.*>.*</style>", "");
+        ReturnData =  ReturnData.replaceAll("<br\\s*/+>", "");
+       
+        ReturnData =  ReturnData.replaceAll("&nbsp;", "");
+String s = ReturnData;
+byte[] b = s.getBytes("CP-1251");
+
+ReturnData = new String(b, "UTF-8");
+
         return ReturnData;
     }
     public void GetPage( String URL_string ){
@@ -60,21 +73,22 @@ public class Manoa {
         catch (MalformedURLException mue){
             System.out.println("Ouch - a MalformedURLException happened.");
             mue.printStackTrace();
-            System.exit(1);
+            //System.exit(1);
         }
         catch (IOException ioe){
             System.out.println("Oops- an IOException happened.");
             ioe.printStackTrace();
-            System.exit(1);
+            //System.exit(1);
         }
         finally{
             //  Close the InputStream  //
-                try{
-                    is.close();
-                }
-                catch (IOException ioe){
+              //  try{
+                    //is.close();
+              //      System.out.println("Oops- an IOException happened.");
+             //   }
+             //   catch (IOException ioe){
                     // just going to ignore this one
-                }
+             //   }
         }
         
     }

@@ -149,7 +149,7 @@ public class ScaberLanView extends FrameView {
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "http://google.com", "http://game-online.ath.cx/lan.php", "http://habrahabr.ru/", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html\"" };
+            String[] strings = { "http://google.com", "http://game-online.ath.cx/lan.php", " ", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html", "http://www.google.ru/language_tools?hl=ru", "http://habrahabr.ru/" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -260,23 +260,18 @@ public class ScaberLanView extends FrameView {
         
         jTextArea2.setText(r.DeleteHTML());
         
-        String[] data = {"http://google.com", "http://game-online.ath.cx/lan.php", "http://habrahabr.ru/", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html"};
-        jList1.setListData(data);
+        //String[] data = {"http://google.com", "http://game-online.ath.cx/lan.php", "http://habrahabr.ru/", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html"};
+        //jList1.setListData(data);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        // TODO add your handling code here:
 
-         //  if (e.getClickCount() == 2) {
-         //    int index = list.locationToIndex(e.getPoint());
-         //    System.out.println("Double clicked on Item " + index);
-        //  }
-//jl.getModel().getElementAt(jl.locationToIndex(me.getPoint())))
         String link = jList1.getModel().getElementAt(jList1.locationToIndex(evt.getPoint())).toString();
         Manoa r = new Manoa();
         r.GetPage(link);
         jTextArea1.setText(r.GetSiteData());
         jTextArea2.setText(r.DeleteHTML());
+        
     }//GEN-LAST:event_jList1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
