@@ -4,6 +4,9 @@
 
 package scaberlan;
 
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -133,14 +136,17 @@ public class ScaberLanView extends FrameView {
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(resourceMap.getFont("jTextArea1.font")); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText(resourceMap.getString("jTextArea1.text")); // NOI18N
         jTextArea1.setName("jTextArea1"); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(resourceMap.getFont("jTextArea2.font")); // NOI18N
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jTextArea2.setName("jTextArea2"); // NOI18N
@@ -149,7 +155,7 @@ public class ScaberLanView extends FrameView {
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "http://google.com", "http://game-online.ath.cx/lan.php", " ", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html", "http://www.google.ru/language_tools?hl=ru", "http://habrahabr.ru/" };
+            String[] strings = { "http://google.com", "http://lolnik.ath.cx/", " ", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html", "http://www.google.ru/language_tools?hl=ru", "http://habrahabr.ru/" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -173,24 +179,27 @@ public class ScaberLanView extends FrameView {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
+        menuBar.setBackground(resourceMap.getColor("menuBar.background")); // NOI18N
         menuBar.setName("menuBar"); // NOI18N
 
+        fileMenu.setBackground(resourceMap.getColor("fileMenu.background")); // NOI18N
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -201,6 +210,7 @@ public class ScaberLanView extends FrameView {
 
         menuBar.add(fileMenu);
 
+        helpMenu.setBackground(resourceMap.getColor("helpMenu.background")); // NOI18N
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
 
@@ -210,6 +220,7 @@ public class ScaberLanView extends FrameView {
 
         menuBar.add(helpMenu);
 
+        statusPanel.setBackground(resourceMap.getColor("statusPanel.background")); // NOI18N
         statusPanel.setName("statusPanel"); // NOI18N
 
         statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
@@ -225,11 +236,11 @@ public class ScaberLanView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 634, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 753, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -257,8 +268,13 @@ public class ScaberLanView extends FrameView {
         Manoa r = new Manoa();
         r.GetPage("http://game-online.ath.cx/lan.php");
         jTextArea1.setText(r.GetSiteData());
-        
-        jTextArea2.setText(r.DeleteHTML());
+        try {
+            jTextArea2.setText(r.DeleteHTML());
+            //String[] data = {"http://google.com", "http://game-online.ath.cx/lan.php", "http://habrahabr.ru/", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html"};
+            //jList1.setListData(data);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ScaberLanView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         //String[] data = {"http://google.com", "http://game-online.ath.cx/lan.php", "http://habrahabr.ru/", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html"};
         //jList1.setListData(data);
@@ -270,7 +286,11 @@ public class ScaberLanView extends FrameView {
         Manoa r = new Manoa();
         r.GetPage(link);
         jTextArea1.setText(r.GetSiteData());
-        jTextArea2.setText(r.DeleteHTML());
+        try {
+            jTextArea2.setText(r.DeleteHTML());
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(ScaberLanView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jList1MouseClicked
 
