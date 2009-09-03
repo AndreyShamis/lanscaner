@@ -4,12 +4,16 @@
  */
 
 package scaberlan;
+
+
+
+
 import java.io.*;
 import java.net.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-
+import sun.net.www.http.HttpClient;
 
 
 
@@ -40,13 +44,21 @@ public class Manoa {
         ReturnData =  ReturnData.replaceAll("<br\\s*/+>", "");
        
         ReturnData =  ReturnData.replaceAll("&nbsp;", "");
-String s = ReturnData;
-byte[] b = s.getBytes("CP-1251");
+//String s = ReturnData;
+//byte[] b = s.getBytes("CP-1251");
 
-ReturnData = new String(b, "UTF-8");
+////ReturnData = new String(b, "UTF-8");
 
         return ReturnData;
     }
+
+    public void GetPage2(String URL_string){
+        HttpClient client;
+        client.
+
+
+    }
+
     public void GetPage( String URL_string ){
         URL u;
         InputStream is = null;
