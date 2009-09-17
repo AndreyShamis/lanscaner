@@ -155,7 +155,7 @@ public class ScaberLanView extends FrameView {
         jScrollPane3.setName("jScrollPane3"); // NOI18N
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "http://google.com", "http://lolnik.ath.cx/", " ", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html", "http://www.google.ru/language_tools?hl=ru", "http://habrahabr.ru/" };
+            String[] strings = { "http://google.com", "http://lolnik.ath.cx/", " ", "http://forum.vingrad.ru/forum/topic-219863/anchor-entry1574043/0.html", "http://www.google.ru/language_tools?hl=ru", "http://habrahabr.ru/", "http://odnoklassniki.ru" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });

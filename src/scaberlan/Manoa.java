@@ -53,8 +53,8 @@ public class Manoa {
     }
 
     public void GetPage2(String URL_string){
-        HttpClient client;
-        client.
+ 
+        
 
 
     }
@@ -67,28 +67,25 @@ public class Manoa {
         String output_data = "";
         try{
             u = new URL(URL_string);
-            //Open an input stream from the url
-            is = u.openStream();         // throws an IOException
-            // Convert the InputStream to a buffered DataInputStream.      //
-            // Buffering the stream makes the reading faster; the          //
-            // readLine() method of the DataInputStream makes the reading  //
-            // easier.                                                     //
+
+            is = u.openStream();        
+            
             dis = new DataInputStream(new BufferedInputStream(is));
-            // Now just read each record of the input stream, and print   //
-            // it out.  Note that it's assumed that this problem is run   //
-            // from a command-line, not from an application or applet.    //
-            while ((s = dis.readLine()) != null) {
-                output_data = output_data + s;
-            }
+
+            //while ((s = dis.readLine()) != null) {
+            //    output_data = output_data + s;
+            //}
+            output_data =dis.readUTF();
+    
             this.SetSiteData(output_data);
         }
         catch (MalformedURLException mue){
-            System.out.println("Ouch - a MalformedURLException happened.");
+            System.out.println("Ouch - a MalformedURLException happened." + mue.toString());
             mue.printStackTrace();
             //System.exit(1);
         }
         catch (IOException ioe){
-            System.out.println("Oops- an IOException happened.");
+            System.out.println("Oops- an IOException happened." + ioe.toString());
             ioe.printStackTrace();
             //System.exit(1);
         }
